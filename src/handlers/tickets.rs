@@ -57,7 +57,6 @@ pub async fn create_ticket(
     State(db): State<DatabaseConnection>,
     Json(payload): Json<CreateTicketRequest>,
 ) -> Result<Json<TicketResponse>, StatusCode> {
-    // For now, use a placeholder user_id. We'll add proper auth later
     let user_id = uuid::Uuid::new_v4();
     let ticket_id = Uuid::new_v4();
     let now = Utc::now();

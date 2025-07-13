@@ -32,7 +32,6 @@ pub async fn create_comment(
     Path(ticket_id): Path<Uuid>,
     Json(payload): Json<CreateCommentRequest>,
 ) -> Result<Json<CommentResponse>, StatusCode> {
-    // For now, use a placeholder user_id. We'll add proper auth later
     let user_id = uuid::Uuid::new_v4();
     let comment_id = Uuid::new_v4();
     let now = Utc::now();
@@ -62,7 +61,6 @@ pub async fn get_ticket_comments(
     State(db): State<DatabaseConnection>,
     Path(ticket_id): Path<Uuid>,
 ) -> Result<Json<Vec<CommentResponse>>, StatusCode> {
-    // For now, show all comments. We'll add role-based filtering later
     let condition = comment::Column::TicketId.eq(ticket_id);
 
     let comments = Comment::find()

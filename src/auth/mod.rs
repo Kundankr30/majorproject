@@ -8,11 +8,11 @@ pub mod middleware;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Claims {
-    pub sub: String, // user id
+    pub sub: String, 
     pub email: String,
     pub role: String,
-    pub exp: i64, // expiration time
-    pub iat: i64, // issued at
+    pub exp: i64, 
+    pub iat: i64,
 }
 
 pub fn create_token(user_id: Uuid, email: &str, role: &str) -> Result<String, jsonwebtoken::errors::Error> {

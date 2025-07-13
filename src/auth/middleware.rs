@@ -28,7 +28,7 @@ pub async fn auth_middleware<B>(
     if let Some(token) = auth_header {
         match verify_token(&token) {
             Ok(claims) => {
-                // Verify user exists in database
+                
                 if let Ok(Some(_user)) = User::find()
                     .filter(user::Column::Id.eq(uuid::Uuid::parse_str(&claims.sub).unwrap()))
                     .one(&db)

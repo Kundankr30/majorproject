@@ -8,10 +8,10 @@ use crate::handlers::{auth, tickets, comments, knowledge_base};
 
 pub fn create_router(db: DatabaseConnection) -> Router {
     Router::new()
-        // Auth routes (no authentication required)
+        
         .route("/auth/login", post(auth::login))
         .route("/auth/register", post(auth::register))
-        // Basic routes without auth for now
+       
         .route("/tickets", get(tickets::list_tickets))
         .route("/tickets", post(tickets::create_ticket))
         .route("/tickets/:id", get(tickets::get_ticket))

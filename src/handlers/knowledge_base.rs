@@ -55,7 +55,6 @@ pub async fn create_article(
     State(db): State<DatabaseConnection>,
     Json(payload): Json<CreateArticleRequest>,
 ) -> Result<Json<ArticleResponse>, StatusCode> {
-    // For now, use a placeholder user_id. We'll add proper auth later
     let user_id = uuid::Uuid::new_v4();
     let article_id = Uuid::new_v4();
     let now = Utc::now();

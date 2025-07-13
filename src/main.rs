@@ -23,11 +23,10 @@ async fn main() {
     dotenv().ok();
     tracing_subscriber::fmt::init();
 
-    // Initialize database connection
     let db = get_db_connection().await;
     tracing::info!("Connected to database");
 
-    // Create the main router
+    
     let app = Router::new()
         .route("/health", get(health_check))
         .merge(create_router(db));
